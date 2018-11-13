@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Football App Final</string>
+    <string name="prev">Prev Match</string>
+    <string name="next">Next Match</string>
+    <string name="fav">Favorites</string>
+    <string name="vs">vs</string>
+
+    <string name="league_id">4329</string>
+    <string name="favorites">Favorite</string>
 </resources>

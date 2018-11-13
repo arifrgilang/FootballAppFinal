@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="team_home_name" type="id" />
+    <item name="vs" type="id" />
+    <item name="team_away_score" type="id" />
+    <item name="team_away_name" type="id" />
+    <item name="match_date" type="id" />
+    <item name="team_home_score" type="id" />
+    <item name="loading" type="id" />
+    <item name="prevRv" type="id" />
+    <item name="detailView" type="id" />
+    <item name="favRv" type="id" />
+    <item name="favRefresh" type="id" />
+</resources>
