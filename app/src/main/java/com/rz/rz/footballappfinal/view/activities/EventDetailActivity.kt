@@ -13,12 +13,12 @@ import android.widget.*
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.api.ApiRepository
-import com.rz.rz.footballappfinal.db.Fav
+import com.rz.rz.footballappfinal.model.db.Fav
 import com.rz.rz.footballappfinal.model.matches.FootballEvent
 import com.rz.rz.footballappfinal.model.matches.TeamBadges
-import com.rz.rz.footballappfinal.presenter.matches.detail.EventDetailPresenter
-import com.rz.rz.footballappfinal.presenter.matches.detail.DetailView
-import com.rz.rz.footballappfinal.db.database
+import com.rz.rz.footballappfinal.presenter.matches.EventDetailPresenter
+import com.rz.rz.footballappfinal.presenter.matches.DetailView
+import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.squareup.picasso.Picasso

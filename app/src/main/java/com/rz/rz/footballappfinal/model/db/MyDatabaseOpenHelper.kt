@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.db
+package com.rz.rz.footballappfinal.model.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

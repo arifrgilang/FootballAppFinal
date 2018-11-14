@@ -1,8 +1,7 @@
-package com.rz.rz.footballappfinal.view.fragments.events
+package com.rz.rz.footballappfinal.view.favorites
 
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
@@ -13,10 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.rz.rz.footballappfinal.R.color.colorAccent
-import com.rz.rz.footballappfinal.db.Favorite
-import com.rz.rz.footballappfinal.db.database
+import com.rz.rz.footballappfinal.model.db.Favorite
+import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.view.activities.TeamDetailActivity
-import com.rz.rz.footballappfinal.view.fragments.adapters.FavTeamsAdapter
+import com.rz.rz.footballappfinal.view.rvAdapter.FavTeamsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
@@ -33,7 +32,7 @@ class FavTeamsFragment : Fragment(), AnkoComponent<Context> {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter = FavTeamsAdapter(favorites){
+        adapter = FavTeamsAdapter(favorites) {
             ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
         listEvent.adapter = adapter

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.presenter.matches.detail
+package com.rz.rz.footballappfinal.presenter.matches
 
 import com.rz.rz.footballappfinal.model.matches.FootballEvent
 import com.rz.rz.footballappfinal.model.matches.TeamBadges

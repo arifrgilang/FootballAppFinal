@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.db
+package com.rz.rz.footballappfinal.model.db
 
 data class Favorite(val id: Long?, val teamId: String?, val teamName: String?, val teamBadge: String?) {
 

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.fragments.events
+package com.rz.rz.footballappfinal.view.favorites
 
 import android.content.Context
 import android.os.Bundle
@@ -13,10 +13,10 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.view.activities.EventDetailActivity
-import com.rz.rz.footballappfinal.db.Fav
-import com.rz.rz.footballappfinal.db.database
+import com.rz.rz.footballappfinal.model.db.Fav
+import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.utils.invisible
-import com.rz.rz.footballappfinal.view.fragments.adapters.FavEventsAdapter
+import com.rz.rz.footballappfinal.view.rvAdapter.FavEventsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select

@@ -2,11 +2,11 @@ package com.rz.rz.footballappfinal.view.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.R.id.*
 import com.rz.rz.footballappfinal.view.favorites.FavoritesTabLayoutFragment
-import com.rz.rz.footballappfinal.view.fragments.events.FavEventsFragment
-import com.rz.rz.footballappfinal.view.fragments.events.NextEventsFragment
 import com.rz.rz.footballappfinal.view.matches.MatchesTabLayoutFragment
 import com.rz.rz.footballappfinal.view.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,60 +15,38 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Tab layout
-//        val fragmentAdapter = MatchesPagerAdapter(supportFragmentManager)
-//        matches_viewpager.adapter = fragmentAdapter
-//        matches_tabs.setupWithViewPager(matches_viewpager)
-        // Toggle bottom navigation bar
-        setBottomBarListener(savedInstanceState)
-        bottom_navigation.selectedItemId = prev_menu
+
+        loadFragment(MatchesTabLayoutFragment())
+        setBottomBarListener()
     }
 
-    private fun setBottomBarListener(savedInstanceState: Bundle?){
+    private fun setBottomBarListener(){
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                prev_menu -> {
-                    loadMatchesFragment(savedInstanceState)
+                bottom_navigation.selectedItemId -> return@setOnNavigationItemSelectedListener false
+
+                matches_menu -> {
+                    loadFragment(MatchesTabLayoutFragment())
+                    return@setOnNavigationItemSelectedListener true
                 }
-                next_menu -> {
-                    loadTeamsFragment(savedInstanceState)
+                teams_menu -> {
+                    loadFragment(TeamsFragment())
+                    return@setOnNavigationItemSelectedListener true
                 }
                 fav_menu -> {
-                    loadFavFragment(savedInstanceState)
+                    loadFragment(FavoritesTabLayoutFragment())
+                    return@setOnNavigationItemSelectedListener true
                 }
             }
-            true
+            return@setOnNavigationItemSelectedListener false
         }
     }
 
-    private fun loadMatchesFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null){
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_container,
-                    MatchesTabLayoutFragment(),
-                    MatchesTabLayoutFragment::class.java.simpleName)
-                .commit()
-        }
-    }
-    private fun loadTeamsFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null){
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_container,
-                    TeamsFragment(),
-                    TeamsFragment::class.java.simpleName)
-                .commit()
-        }
-    }
-    private fun loadFavFragment(savedInstanceState: Bundle?){
-        if(savedInstanceState == null){
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_container,
-                    FavoritesTabLayoutFragment(),
-                    FavoritesTabLayoutFragment::class.java.simpleName)
-                .commit()
+    private fun loadFragment(fragment: Fragment) {
+        with(supportFragmentManager.beginTransaction()) {
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            replace(R.id.main_container, fragment)
+            commit()
         }
     }
 }

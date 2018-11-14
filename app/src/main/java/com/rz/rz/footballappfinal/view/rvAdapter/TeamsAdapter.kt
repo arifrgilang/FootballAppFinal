@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.fragments.adapters
+package com.rz.rz.footballappfinal.view.rvAdapter
 
 
 import android.support.v7.widget.RecyclerView
@@ -18,7 +18,11 @@ class TeamsAdapter (private val teams: List<Team>, private val listener: (Team) 
     override fun getItemCount(): Int = teams.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        return TeamViewHolder(TeamsUI().createView(AnkoContext.create(parent.context, parent)))
+        return TeamViewHolder(
+            TeamsUI().createView(
+                AnkoContext.create(parent.context, parent)
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {

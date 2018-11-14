@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.fragments.adapters
+package com.rz.rz.footballappfinal.view.rvAdapter
 
 
 import android.support.v7.widget.RecyclerView
@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R.id.team_badge
 import com.rz.rz.footballappfinal.R.id.team_name
-import com.rz.rz.footballappfinal.db.Favorite
+import com.rz.rz.footballappfinal.model.db.Favorite
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -20,7 +20,8 @@ class FavTeamsAdapter(private val favorite: List<Favorite>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         return FavoriteViewHolder(
-            TeamUI().createView(AnkoContext.create(parent.context, parent)))
+            TeamUI().createView(AnkoContext.create(parent.context, parent))
+        )
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.presenter.matches.detail
+package com.rz.rz.footballappfinal.presenter.matches
 
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.api.ApiRepository

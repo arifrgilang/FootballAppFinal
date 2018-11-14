@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.fragments.events
+package com.rz.rz.footballappfinal.view.matches
 
 import android.content.Context
 import android.os.Bundle
@@ -17,11 +17,11 @@ import com.rz.rz.footballappfinal.R.color.colorAccent
 import com.rz.rz.footballappfinal.view.activities.EventDetailActivity
 import com.rz.rz.footballappfinal.api.ApiRepository
 import com.rz.rz.footballappfinal.model.matches.FootballEvent
-import com.rz.rz.footballappfinal.presenter.matches.events.EventsView
-import com.rz.rz.footballappfinal.presenter.matches.events.NextEventsPresenter
+import com.rz.rz.footballappfinal.presenter.matches.EventsView
+import com.rz.rz.footballappfinal.presenter.matches.NextEventsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
-import com.rz.rz.footballappfinal.view.fragments.adapters.NextEventsAdapter
+import com.rz.rz.footballappfinal.view.rvAdapter.NextEventsAdapter
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.*

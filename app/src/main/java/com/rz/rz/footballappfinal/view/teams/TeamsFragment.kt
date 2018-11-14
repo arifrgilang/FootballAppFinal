@@ -21,7 +21,7 @@ import com.rz.rz.footballappfinal.presenter.teams.TeamsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.activities.TeamDetailActivity
-import com.rz.rz.footballappfinal.view.fragments.adapters.TeamsAdapter
+import com.rz.rz.footballappfinal.view.rvAdapter.TeamsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.fragments.adapters
+package com.rz.rz.footballappfinal.view.rvAdapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.db.Fav
+import com.rz.rz.footballappfinal.model.db.Fav
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -18,7 +18,12 @@ class FavEventsAdapter(private val events: List<Fav>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavEventsViewHolder {
         return FavEventsViewHolder(
-            FavViewHolder().createView(AnkoContext.create(parent.context, parent))
+            FavViewHolder().createView(
+                AnkoContext.create(
+                    parent.context,
+                    parent
+                )
+            )
         )
     }
 

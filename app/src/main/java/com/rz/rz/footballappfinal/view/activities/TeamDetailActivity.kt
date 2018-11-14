@@ -20,11 +20,11 @@ import com.rz.rz.footballappfinal.R.drawable.ic_added_to_favorites
 import com.rz.rz.footballappfinal.R.id.add_to_favorite
 import com.rz.rz.footballappfinal.R.menu.detail_menu
 import com.rz.rz.footballappfinal.api.ApiRepository
-import com.rz.rz.footballappfinal.db.Favorite
+import com.rz.rz.footballappfinal.model.db.Favorite
 import com.rz.rz.footballappfinal.model.teams.Team
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailPresenter
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailView
-import com.rz.rz.footballappfinal.db.database
+import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.squareup.picasso.Picasso
