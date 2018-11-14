@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="leagueName">
+        <item>English Premier League</item>
+        <item>English League Championship</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>French Ligue 1</item>
+        <item>Spanish La Liga</item>
+    </string-array>
+    <string-array name="leagueId">
+        <item>4328</item>
+        <item>4329</item>
+        <item>4331</item>
+        <item>4332</item>
+        <item>4334</item>
+        <item>4335</item>
+    </string-array>
+</resources>

@@ -40,8 +40,20 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val spinnerItems = resources.getStringArray(R.array.league)
+
+        setSpinner()
+        setRvAdapter()
+        requestAPI()
+
+        swipeRefresh.onRefresh {
+            presenter.getTeamList(leagueName)
+        }
+    }
+
+    private fun setSpinner(){
+        val spinnerItems = resources.getStringArray(R.array.leagueName)
         val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+
         spinner.adapter = spinnerAdapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -51,20 +63,17 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamView {
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-        //
-        swipeRefresh.onRefresh {
-            presenter.getTeamList(leagueName)
-        }
-        // set RV adapter
+    }
+    private fun setRvAdapter(){
         adapter = TeamsAdapter(teams) {
             // "it", is in the bind method inside adapter
             ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
         listTeam.adapter = adapter
-        // api request
-        val request = ApiRepository()
-        val gson = Gson()
-        presenter = TeamsPresenter(this, request, gson)
+    }
+
+    private fun requestAPI(){
+        presenter = TeamsPresenter(this, ApiRepository(), Gson())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

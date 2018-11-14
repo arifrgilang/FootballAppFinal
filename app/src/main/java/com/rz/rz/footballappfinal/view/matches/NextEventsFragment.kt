@@ -9,8 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ProgressBar
+import android.widget.*
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.R.color.colorAccent
@@ -22,6 +21,7 @@ import com.rz.rz.footballappfinal.presenter.matches.NextEventsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.rvAdapter.NextEventsAdapter
+import com.rz.rz.footballappfinal.view.rvAdapter.PrevEventsAdapter
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.*
@@ -36,20 +36,43 @@ class NextEventsFragment : Fragment(), AnkoComponent<Context>, EventsView {
     private lateinit var mRV: RecyclerView
     private lateinit var mLoading: ProgressBar
     private lateinit var mRefreshLayout: SwipeRefreshLayout
+    private lateinit var spinner: Spinner
     // -
     private lateinit var mPresenter: NextEventsPresenter
     private lateinit var mAdapter: NextEventsAdapter
+    //
+    private lateinit var leagueId: String
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setAdapter()
+        setSpinner()
+        setRvAdapter()
         requestAPI()
+
         mRefreshLayout.onRefresh{
-            mPresenter.requestEventList(getString(R.string.league_id))
+            mPresenter.requestEventList(leagueId)
         }
     }
 
-    private fun setAdapter(){
+    private fun setSpinner(){
+        val strLeagueId = resources.getStringArray(R.array.leagueId)
+        leagueId = strLeagueId[0].toString()
+
+        val spinnerItems = resources.getStringArray(R.array.leagueName)
+        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+
+        spinner.adapter = spinnerAdapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                // Retrieve the team name that was clicked by user
+                leagueId = strLeagueId[position].toString()
+                mPresenter.requestEventList(leagueId)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
+
+    private fun setRvAdapter(){
         mAdapter = NextEventsAdapter(footballEventList) {
             ctx.startActivity<EventDetailActivity>(
                 "id" to "${it.idEvent}",
@@ -59,11 +82,10 @@ class NextEventsFragment : Fragment(), AnkoComponent<Context>, EventsView {
         }
         mRV.adapter = mAdapter
     }
+
     private fun requestAPI(){
-        val request = ApiRepository()
-        val gson = Gson()
-        mPresenter = NextEventsPresenter(this, request, gson)
-        mPresenter.requestEventList(getString(R.string.league_id))
+        mPresenter = NextEventsPresenter(this, ApiRepository(), Gson())
+        mPresenter.requestEventList(leagueId)
     }
     // Anko Inflater
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -91,6 +113,7 @@ class NextEventsFragment : Fragment(), AnkoComponent<Context>, EventsView {
             lparams(width = matchParent, height = wrapContent)
             orientation = LinearLayout.VERTICAL
             //
+            spinner = spinner()
             mRefreshLayout = swipeRefreshLayout {
                 setColorSchemeResources(colorAccent,
                     android.R.color.holo_green_light,
