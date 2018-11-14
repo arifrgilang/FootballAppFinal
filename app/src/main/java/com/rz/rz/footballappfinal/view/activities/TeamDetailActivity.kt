@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v4.widget.SwipeRefreshLayout
@@ -34,6 +35,7 @@ import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.matches.NextEventsFragment
 import com.rz.rz.footballappfinal.view.matches.PrevEventsFragment
 import com.rz.rz.footballappfinal.view.teams.TeamDetailFragment
+import com.rz.rz.footballappfinal.view.teams.TeamDetailTabLayoutFragment
 import com.rz.rz.footballappfinal.view.teams.TeamPlayersFragment
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
@@ -52,9 +54,6 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     private lateinit var teams: Team
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager
-    private lateinit var pagerAdapter: PagerAdapter
 
     private lateinit var teamBadge: ImageView
     private lateinit var teamName: TextView
@@ -68,19 +67,27 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_team_detail)
 
+        swipeRefresh = findViewById(R.id.team_detail_refreshlayout)
+        progressBar = findViewById(R.id.team_detail_progressbar)
+
+        teamBadge = findViewById(R.id.team_detail_badges)
+        teamName = findViewById(R.id.team_detail_name)
+        teamFormedYear = findViewById(R.id.team_detail_year)
+        teamStadium = findViewById(R.id.team_detail_stadium)
+//        teamDescription =
         getIntentValue()
-        setView()
+
+        with(supportFragmentManager.beginTransaction()) {
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            replace(R.id.team_detail_container, TeamDetailTabLayoutFragment())
+            commit()
+        }
+
+//        setView()
         favoriteState()
         requestApi()
-
-        pagerAdapter = PagerAdapter(supportFragmentManager)
-        pagerAdapter.addFragment(TeamPlayersFragment(), "tesuto")
-        pagerAdapter.addFragment(TeamDetailFragment(), "tesuti")
-
-        viewPager= findViewById(R.id.team_viewpager)
-        viewPager.adapter = pagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
 
         swipeRefresh.onRefresh {
             presenter.getTeamDetail(id)
@@ -97,75 +104,6 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     private fun requestApi(){
         presenter = TeamDetailPresenter(this, ApiRepository(), Gson())
         presenter.getTeamDetail(id)
-    }
-
-    private fun setView(){
-        linearLayout {
-            lparams(width = matchParent, height = wrapContent)
-            orientation = LinearLayout.VERTICAL
-            backgroundColor = Color.WHITE
-
-            swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(colorAccent,
-                    android.R.color.holo_green_light,
-                    android.R.color.holo_orange_light,
-                    android.R.color.holo_red_light)
-
-                scrollView {
-                    isVerticalScrollBarEnabled = false
-                    relativeLayout {
-                        lparams(width = matchParent, height = wrapContent)
-
-                        linearLayout{
-                            lparams(width = matchParent, height = wrapContent)
-                            padding = dip(10)
-                            orientation = LinearLayout.VERTICAL
-                            gravity = Gravity.CENTER_HORIZONTAL
-
-                            teamBadge =  imageView {}.lparams(height = dip(75))
-
-                            teamName = textView{
-                                this.gravity = Gravity.CENTER
-                                textSize = 20f
-                                textColor = ContextCompat.getColor(context, colorAccent)
-                            }.lparams{
-                                topMargin = dip(5)
-                            }
-
-                            teamFormedYear = textView{
-                                this.gravity = Gravity.CENTER
-                            }
-
-                            teamStadium = textView{
-                                this.gravity = Gravity.CENTER
-                                textColor = ContextCompat.getColor(context, colorAccent)
-                            }
-
-                            teamDescription = textView().lparams{
-                                topMargin = dip(20)
-                            }
-                        }
-                        linearLayout{
-                            lparams(matchParent, matchParent)
-                            tabLayout = tabLayout {
-                                lparams(matchParent, wrapContent){
-                                    tabGravity = Gravity.FILL
-                                    tabMode = TabLayout.MODE_FIXED
-                                }
-                            }
-
-                            viewPager = viewPager {
-                                id = R.id.team_viewpager
-                            }.lparams(matchParent, wrapContent)
-                        }
-                        progressBar = progressBar {
-                        }.lparams {
-                            centerHorizontally()
-                        }
-                    }
-                }
-            }
-        }
     }
 
     private fun favoriteState(){
@@ -193,10 +131,9 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
         swipeRefresh.isRefreshing = false
         Picasso.get().load(data[0].teamBadge).into(teamBadge)
         teamName.text = data[0].teamName
-        teamDescription.text = data[0].teamDescription
+//        teamDescription.text = data[0].teamDescription
         teamFormedYear.text = data[0].teamFormedYear
         teamStadium.text = data[0].teamStadium
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
