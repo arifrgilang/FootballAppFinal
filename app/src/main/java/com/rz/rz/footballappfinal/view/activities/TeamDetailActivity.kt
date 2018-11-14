@@ -3,7 +3,9 @@ package com.rz.rz.footballappfinal.view.activities
 import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Color
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewPager
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
@@ -14,6 +16,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.gson.Gson
+import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.R.color.colorAccent
 import com.rz.rz.footballappfinal.R.drawable.ic_add_to_favorites
 import com.rz.rz.footballappfinal.R.drawable.ic_added_to_favorites
@@ -25,8 +28,13 @@ import com.rz.rz.footballappfinal.model.teams.Team
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailPresenter
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailView
 import com.rz.rz.footballappfinal.model.db.database
+import com.rz.rz.footballappfinal.utils.PagerAdapter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
+import com.rz.rz.footballappfinal.view.matches.NextEventsFragment
+import com.rz.rz.footballappfinal.view.matches.PrevEventsFragment
+import com.rz.rz.footballappfinal.view.teams.TeamDetailFragment
+import com.rz.rz.footballappfinal.view.teams.TeamPlayersFragment
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
@@ -34,14 +42,19 @@ import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
+import org.jetbrains.anko.design.tabLayout
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
+import org.jetbrains.anko.support.v4.viewPager
 
 class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     private lateinit var presenter: TeamDetailPresenter
     private lateinit var teams: Team
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager
+    private lateinit var pagerAdapter: PagerAdapter
 
     private lateinit var teamBadge: ImageView
     private lateinit var teamName: TextView
@@ -56,11 +69,37 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        getIntentValue()
+        setView()
+        favoriteState()
+        requestApi()
+
+        pagerAdapter = PagerAdapter(supportFragmentManager)
+        pagerAdapter.addFragment(TeamPlayersFragment(), "tesuto")
+        pagerAdapter.addFragment(TeamDetailFragment(), "tesuti")
+
+        viewPager= findViewById(R.id.team_viewpager)
+        viewPager.adapter = pagerAdapter
+        tabLayout.setupWithViewPager(viewPager)
+
+        swipeRefresh.onRefresh {
+            presenter.getTeamDetail(id)
+        }
+    }
+
+    private fun getIntentValue(){
         val intent = intent
         id = intent.getStringExtra("id")
         supportActionBar?.title = "Team Detail"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
+    private fun requestApi(){
+        presenter = TeamDetailPresenter(this, ApiRepository(), Gson())
+        presenter.getTeamDetail(id)
+    }
+
+    private fun setView(){
         linearLayout {
             lparams(width = matchParent, height = wrapContent)
             orientation = LinearLayout.VERTICAL
@@ -106,6 +145,19 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                                 topMargin = dip(20)
                             }
                         }
+                        linearLayout{
+                            lparams(matchParent, matchParent)
+                            tabLayout = tabLayout {
+                                lparams(matchParent, wrapContent){
+                                    tabGravity = Gravity.FILL
+                                    tabMode = TabLayout.MODE_FIXED
+                                }
+                            }
+
+                            viewPager = viewPager {
+                                id = R.id.team_viewpager
+                            }.lparams(matchParent, wrapContent)
+                        }
                         progressBar = progressBar {
                         }.lparams {
                             centerHorizontally()
@@ -113,16 +165,6 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                     }
                 }
             }
-        }
-
-        favoriteState()
-        val request = ApiRepository()
-        val gson = Gson()
-        presenter = TeamDetailPresenter(this, request, gson)
-        presenter.getTeamDetail(id)
-
-        swipeRefresh.onRefresh {
-            presenter.getTeamDetail(id)
         }
     }
 

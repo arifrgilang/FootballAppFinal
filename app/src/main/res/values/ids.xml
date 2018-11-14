@@ -13,4 +13,5 @@
     <item name="favRefresh" type="id" />
     <item name="team_badge" type="id"/>
     <item name="team_name" type="id"/>
+    <item name="team_viewpager" type="id"/>
 </resources>
