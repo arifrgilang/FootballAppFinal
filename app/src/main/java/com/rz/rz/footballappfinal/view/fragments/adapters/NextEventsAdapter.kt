@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.model.FootballEvent
+import com.rz.rz.footballappfinal.model.matches.FootballEvent
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.cardview.v7.cardView

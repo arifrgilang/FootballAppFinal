@@ -1,8 +1,7 @@
-package com.rz.rz.footballappfinal.utils
+package com.rz.rz.footballappfinal.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.rz.rz.footballappfinal.model.Fav
 import org.jetbrains.anko.db.*
 
 class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
@@ -13,7 +12,8 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
         @Synchronized
         fun getInstance(ctx: Context): MyDatabaseOpenHelper {
             if (instance == null) {
-                instance = MyDatabaseOpenHelper(ctx.applicationContext)
+                instance =
+                        MyDatabaseOpenHelper(ctx.applicationContext)
             }
             return instance as MyDatabaseOpenHelper
         }
@@ -21,7 +21,8 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
 
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables if not exists
-        db.createTable(Fav.TABLE_FAVORITE, true,
+        db.createTable(
+            Fav.TABLE_FAVORITE, true,
             Fav.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
             Fav.TEAM_ID to TEXT + UNIQUE,
             Fav.HOME_NAME to TEXT,
@@ -29,6 +30,12 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
             Fav.HOME_SCORE to TEXT,
             Fav.AWAY_SCORE to TEXT,
             Fav.DATE_EVENT to TEXT)
+
+        db.createTable(Favorite.TABLE_FAVORITE, true,
+            Favorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            Favorite.TEAM_ID to TEXT + UNIQUE,
+            Favorite.TEAM_NAME to TEXT,
+            Favorite.TEAM_BADGE to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

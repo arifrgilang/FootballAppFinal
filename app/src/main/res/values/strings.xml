@@ -5,6 +5,16 @@
     <string name="fav">Favorites</string>
     <string name="vs">vs</string>
 
+    <array name="league">
+        <item>English Premier League</item>
+        <item>English League Championship</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>French Ligue 1</item>
+        <item>Spanish La Liga</item>
+    </array>
+
     <string name="league_id">4329</string>
     <string name="favorites">Favorite</string>
+    <string name="blank">Blank</string>
 </resources>

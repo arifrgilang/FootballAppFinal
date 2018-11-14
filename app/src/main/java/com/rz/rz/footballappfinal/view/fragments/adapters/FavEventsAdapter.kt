@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.model.Fav
+import com.rz.rz.footballappfinal.db.Fav
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.sdk27.coroutines.onClick

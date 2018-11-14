@@ -13,8 +13,8 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.view.activities.EventDetailActivity
-import com.rz.rz.footballappfinal.model.Fav
-import com.rz.rz.footballappfinal.utils.database
+import com.rz.rz.footballappfinal.db.Fav
+import com.rz.rz.footballappfinal.db.database
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.view.fragments.adapters.FavEventsAdapter
 import org.jetbrains.anko.*

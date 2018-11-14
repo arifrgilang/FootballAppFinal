@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.model
+package com.rz.rz.footballappfinal.model.matches
 
 import com.google.gson.annotations.SerializedName
 

@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.R.id.*
+import com.rz.rz.footballappfinal.view.favorites.FavoritesTabLayoutFragment
 import com.rz.rz.footballappfinal.view.fragments.events.FavEventsFragment
 import com.rz.rz.footballappfinal.view.fragments.events.NextEventsFragment
 import com.rz.rz.footballappfinal.view.matches.MatchesTabLayoutFragment
+import com.rz.rz.footballappfinal.view.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 prev_menu -> {
-                    loadPrevFragment(savedInstanceState)
+                    loadMatchesFragment(savedInstanceState)
                 }
                 next_menu -> {
-                    loadNextFragment(savedInstanceState)
+                    loadTeamsFragment(savedInstanceState)
                 }
                 fav_menu -> {
                     loadFavFragment(savedInstanceState)
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadPrevFragment(savedInstanceState: Bundle?) {
+    private fun loadMatchesFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null){
             supportFragmentManager
                 .beginTransaction()
@@ -49,13 +51,13 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
-    private fun loadNextFragment(savedInstanceState: Bundle?) {
+    private fun loadTeamsFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null){
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_container,
-                    NextEventsFragment(),
-                    NextEventsFragment::class.java.simpleName)
+                    TeamsFragment(),
+                    TeamsFragment::class.java.simpleName)
                 .commit()
         }
     }
@@ -64,8 +66,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_container,
-                    FavEventsFragment(),
-                    FavEventsFragment::class.java.simpleName)
+                    FavoritesTabLayoutFragment(),
+                    FavoritesTabLayoutFragment::class.java.simpleName)
                 .commit()
         }
     }

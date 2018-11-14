@@ -11,4 +11,6 @@
     <item name="detailView" type="id" />
     <item name="favRv" type="id" />
     <item name="favRefresh" type="id" />
+    <item name="team_badge" type="id"/>
+    <item name="team_name" type="id"/>
 </resources>

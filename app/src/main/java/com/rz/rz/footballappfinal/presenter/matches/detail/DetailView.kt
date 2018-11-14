@@ -1,7 +1,7 @@
-package com.rz.rz.footballappfinal.presenter.detail
+package com.rz.rz.footballappfinal.presenter.matches.detail
 
-import com.rz.rz.footballappfinal.model.FootballEvent
-import com.rz.rz.footballappfinal.model.TeamBadges
+import com.rz.rz.footballappfinal.model.matches.FootballEvent
+import com.rz.rz.footballappfinal.model.matches.TeamBadges
 
 interface DetailView {
     fun showLoading()

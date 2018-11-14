@@ -13,12 +13,12 @@ import android.widget.*
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.api.ApiRepository
-import com.rz.rz.footballappfinal.model.Fav
-import com.rz.rz.footballappfinal.model.FootballEvent
-import com.rz.rz.footballappfinal.model.TeamBadges
-import com.rz.rz.footballappfinal.presenter.detail.EventDetailPresenter
-import com.rz.rz.footballappfinal.presenter.detail.DetailView
-import com.rz.rz.footballappfinal.utils.database
+import com.rz.rz.footballappfinal.db.Fav
+import com.rz.rz.footballappfinal.model.matches.FootballEvent
+import com.rz.rz.footballappfinal.model.matches.TeamBadges
+import com.rz.rz.footballappfinal.presenter.matches.detail.EventDetailPresenter
+import com.rz.rz.footballappfinal.presenter.matches.detail.DetailView
+import com.rz.rz.footballappfinal.db.database
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.squareup.picasso.Picasso
@@ -259,7 +259,8 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
     private fun addToFavorite(){
         try {
             database.use {
-                insert(Fav.TABLE_FAVORITE,
+                insert(
+                    Fav.TABLE_FAVORITE,
                     Fav.TEAM_ID to mFootballEvent.idEvent,
                     Fav.HOME_NAME to mFootballEvent.strHomeTeam,
                     Fav.AWAY_NAME to mFootballEvent.strAwayTeam,
@@ -276,7 +277,8 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
     private fun removeFromFavorite(){
         try {
             database.use {
-                delete(Fav.TABLE_FAVORITE,"TEAM_ID = {id}",
+                delete(
+                    Fav.TABLE_FAVORITE,"TEAM_ID = {id}",
                     "id" to mId)
             }
             snackbar(scrollView, "Removed to favorite").show()

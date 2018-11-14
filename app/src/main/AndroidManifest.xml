@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activities.EventDetailActivity"/>
+        <activity android:name=".view.activities.TeamDetailActivity"/>
     </application>
 
 </manifest>

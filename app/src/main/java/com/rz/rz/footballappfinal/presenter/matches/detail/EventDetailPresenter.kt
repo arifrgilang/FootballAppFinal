@@ -1,10 +1,10 @@
-package com.rz.rz.footballappfinal.presenter.detail
+package com.rz.rz.footballappfinal.presenter.matches.detail
 
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.api.ApiRepository
 import com.rz.rz.footballappfinal.api.TheSportDBAPI
-import com.rz.rz.footballappfinal.model.FootballEventResponse
-import com.rz.rz.footballappfinal.model.TeamBadgesResponse
+import com.rz.rz.footballappfinal.model.matches.FootballEventResponse
+import com.rz.rz.footballappfinal.model.matches.TeamBadgesResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
