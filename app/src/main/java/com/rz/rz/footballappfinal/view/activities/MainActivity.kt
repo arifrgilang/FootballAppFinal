@@ -7,12 +7,18 @@ import com.rz.rz.footballappfinal.R.id.*
 import com.rz.rz.footballappfinal.view.fragments.events.FavEventsFragment
 import com.rz.rz.footballappfinal.view.fragments.events.NextEventsFragment
 import com.rz.rz.footballappfinal.view.fragments.events.PrevEventsFragment
+import com.rz.rz.footballappfinal.view.fragments.events.TabMatchesFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_matches.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // Tab layout
+//        val fragmentAdapter = MatchPagerAdapter(supportFragmentManager)
+//        matches_viewpager.adapter = fragmentAdapter
+//        matches_tabs.setupWithViewPager(matches_viewpager)
         // Toggle bottom navigation bar
         setBottomBarListener(savedInstanceState)
         bottom_navigation.selectedItemId = prev_menu
@@ -40,8 +46,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_container,
-                    PrevEventsFragment(),
-                    PrevEventsFragment::class.java.simpleName)
+                    TabMatchesFragment(),
+                    TabMatchesFragment::class.java.simpleName)
                 .commit()
         }
     }
