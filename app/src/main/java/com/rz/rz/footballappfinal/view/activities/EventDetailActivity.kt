@@ -268,9 +268,9 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
                     Fav.AWAY_SCORE to mFootballEvent.intAwayScore,
                     Fav.DATE_EVENT to mFootballEvent.dateEvent)
             }
-            snackbar(scrollView, "Added to favorite").show()
+            scrollView.snackbar("Added to favorite").show()
         } catch (e: SQLiteConstraintException){
-            snackbar(scrollView, e.localizedMessage).show()
+            scrollView.snackbar(e.localizedMessage).show()
 
         }
     }
@@ -281,9 +281,9 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
                     Fav.TABLE_FAVORITE,"TEAM_ID = {id}",
                     "id" to mId)
             }
-            snackbar(scrollView, "Removed to favorite").show()
+            scrollView.snackbar("Removed to favorite").show()
         } catch (e: SQLiteConstraintException){
-            snackbar(scrollView, e.localizedMessage).show()
+            scrollView.snackbar(e.localizedMessage).show()
         }
     }
 }

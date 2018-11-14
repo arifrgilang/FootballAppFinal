@@ -1,7 +1,7 @@
-package com.rz.rz.footballappfinal.presenter.teams
+package com.rz.rz.footballappfinal.view.teams.teamDetail
 
 import com.rz.rz.footballappfinal.model.teams.Team
 
-interface TeamDetailView {
+interface TeamDetailFragmentView {
     fun showTeamDetail(data: List<Team>)
 }
