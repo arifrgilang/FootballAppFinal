@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.fragments.events
+package com.rz.rz.footballappfinal.view.matches
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -8,10 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.view.activities.MatchPagerAdapter
 
 
-class TabMatchesFragment: Fragment(){
+class MatchesTabLayoutFragment: Fragment(){
     private lateinit var tab: TabLayout
     private lateinit var vp: ViewPager
 
@@ -20,7 +19,8 @@ class TabMatchesFragment: Fragment(){
         tab = view.findViewById(R.id.matches_tabs)
         vp = view.findViewById(R.id.matches_viewpager)
 
-        val fragmentAdapter = MatchPagerAdapter(activity?.supportFragmentManager!!)
+        val fragmentAdapter =
+            MatchesPagerAdapter(activity?.supportFragmentManager!!)
         vp.adapter = fragmentAdapter
         tab.setupWithViewPager(vp)
 

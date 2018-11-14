@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.activities
+package com.rz.rz.footballappfinal.view.matches
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.rz.rz.footballappfinal.view.fragments.events.NextEventsFragment
 import com.rz.rz.footballappfinal.view.fragments.events.PrevEventsFragment
 
-class MatchPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class MatchesPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(p0: Int): Fragment {
         when(p0){
             0 -> return PrevEventsFragment()
