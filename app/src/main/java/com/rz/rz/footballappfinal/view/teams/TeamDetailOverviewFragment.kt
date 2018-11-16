@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.teams.teamDetail
+package com.rz.rz.footballappfinal.view.teams
 
 import android.content.Context
 import android.os.Bundle
@@ -10,10 +10,12 @@ import android.widget.TextView
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.api.ApiRepository
 import com.rz.rz.footballappfinal.model.teams.Team
+import com.rz.rz.footballappfinal.presenter.teams.TeamDetailFragmentPresenter
+import com.rz.rz.footballappfinal.presenter.teams.TeamDetailFragmentView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.support.v4.ctx
 
-class TeamDetailFragment: Fragment(), AnkoComponent<Context>,
+class TeamDetailOverviewFragment: Fragment(), AnkoComponent<Context>,
     TeamDetailFragmentView {
 
     private lateinit var id: String

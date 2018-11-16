@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.teams.teamDetail
+package com.rz.rz.footballappfinal.presenter.teams
 
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.api.ApiRepository

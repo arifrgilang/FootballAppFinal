@@ -9,4 +9,6 @@
     <string name="league_id">4328</string>
     <string name="favorites">Favorite</string>
     <string name="blank">Blank</string>
+    <string name="player_weight">Weight(Kg)</string>
+    <string name="title_height">Height(m)</string>
 </resources>

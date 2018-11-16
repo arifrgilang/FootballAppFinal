@@ -3,14 +3,8 @@ package com.rz.rz.footballappfinal.model.players
 import com.google.gson.annotations.SerializedName
 
 class Player (
-    @SerializedName("idTeam")
-    var idTeam: String? = null,
-
-    @SerializedName("strCutout")
-    var strCutout: String? = null,
-
-    @SerializedName("strFanart2")
-    var strFanart2: String? = null,
+    @SerializedName("strFanart1")
+    var strFanart1: String? = null,
 
     @SerializedName("strPlayer")
     var strPlayer: String? = null,

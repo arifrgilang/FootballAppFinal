@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.utils.PagerAdapter
-import com.rz.rz.footballappfinal.view.teams.teamDetail.TeamDetailFragment
-import com.rz.rz.footballappfinal.view.teams.teamPlayers.TeamPlayersFragment
 
 class TeamDetailTabLayoutFragment: Fragment(){
     private lateinit var tab: TabLayout
@@ -23,8 +21,8 @@ class TeamDetailTabLayoutFragment: Fragment(){
         vp = view.findViewById(R.id.team_detail_viewpager)
 
         pagerAdapter = PagerAdapter(childFragmentManager)
-        pagerAdapter.addFragment(TeamDetailFragment(), "Details")
-        pagerAdapter.addFragment(TeamPlayersFragment(), "Players")
+        pagerAdapter.addFragment(TeamDetailOverviewFragment(), "Details")
+        pagerAdapter.addFragment(TeamDetailPlayersFragment(), "Players")
 
         vp.adapter = pagerAdapter
         tab.setupWithViewPager(vp)

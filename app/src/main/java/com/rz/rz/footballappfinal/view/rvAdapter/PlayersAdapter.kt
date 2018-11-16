@@ -9,11 +9,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.model.players.Player
+import com.rz.rz.footballappfinal.model.players.PlayerList
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class PlayersAdapter (private val players: List<Player>, private val listener: (Player) -> Unit)
+class PlayersAdapter (private val players: List<PlayerList>, private val listener: (PlayerList) -> Unit)
     : RecyclerView.Adapter<PlayerViewHolder>(){
     override fun getItemCount(): Int = players.size
 
@@ -35,12 +36,11 @@ class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view){
     private val playerName: TextView = view.findViewById(R.id.players_name)
     private val playerRole: TextView = view.findViewById(R.id.players_role)
 
-    fun bindItem(player: Player, listener: (Player) -> Unit){
+    fun bindItem(player: PlayerList, listener: (PlayerList) -> Unit){
         Picasso.get().load(player.strCutout).into(playerIcon)
         playerName.text = player.strPlayer
         playerRole.text = player.strPosition
         itemView.onClick { listener(player) }
-
     }
 }
 

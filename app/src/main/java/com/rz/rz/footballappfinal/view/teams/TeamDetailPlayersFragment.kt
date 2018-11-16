@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.teams.teamPlayers
+package com.rz.rz.footballappfinal.view.teams
 
 import android.content.Context
 import android.os.Bundle
@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.api.ApiRepository
-import com.rz.rz.footballappfinal.model.players.Player
+import com.rz.rz.footballappfinal.model.players.PlayerList
+import com.rz.rz.footballappfinal.presenter.players.PlayersListPresenter
+import com.rz.rz.footballappfinal.presenter.players.PlayersListView
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.activities.PlayerDetailActivity
@@ -20,13 +22,13 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 
-class TeamPlayersFragment: Fragment(), AnkoComponent<Context>,
-    PlayersView {
-    private var playersList: MutableList<Player> = mutableListOf()
+class TeamDetailPlayersFragment: Fragment(), AnkoComponent<Context>,
+    PlayersListView {
+    private var playersList: MutableList<PlayerList> = mutableListOf()
     private lateinit var mRV: RecyclerView
     private lateinit var mLoading: ProgressBar
     private lateinit var playerAdapter: PlayersAdapter
-    private lateinit var mPresenter: PlayersPresenter
+    private lateinit var mListPresenter: PlayersListPresenter
     private lateinit var teamId: String
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -39,14 +41,14 @@ class TeamPlayersFragment: Fragment(), AnkoComponent<Context>,
     private fun setRvAdapter(){
         playerAdapter = PlayersAdapter(playersList) {
             // "it", is in the bind method inside adapter
-            ctx.startActivity<PlayerDetailActivity>("id" to "${it.idTeam}")
+            ctx.startActivity<PlayerDetailActivity>("id" to "${it.idPlayer}")
         }
         mRV.adapter = playerAdapter
     }
 
     private fun requestAPI(){
-        mPresenter = PlayersPresenter(this, ApiRepository(), Gson())
-        mPresenter.getPlayers(teamId)
+        mListPresenter = PlayersListPresenter(this, ApiRepository(), Gson())
+        mListPresenter.getPlayers(teamId)
     }
 
     override fun createView(ui: AnkoContext<Context>): View = with(ui){
@@ -80,7 +82,7 @@ class TeamPlayersFragment: Fragment(), AnkoComponent<Context>,
         mLoading.invisible()
     }
 
-    override fun showPlayersList(data: List<Player>) {
+    override fun showPlayersList(data: List<PlayerList>) {
         playersList.clear()
         playersList.addAll(data)
         playerAdapter.notifyDataSetChanged()
