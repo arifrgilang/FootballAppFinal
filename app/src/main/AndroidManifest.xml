@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.rz.rz.footballappfinal">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -20,6 +21,8 @@
         </activity>
         <activity android:name=".view.activities.EventDetailActivity"/>
         <activity android:name=".view.activities.TeamDetailActivity"/>
+        <activity android:name=".view.activities.PlayerDetailActivity">
+        </activity>
     </application>
 
 </manifest>

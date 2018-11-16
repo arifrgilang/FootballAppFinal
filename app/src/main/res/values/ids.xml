@@ -14,4 +14,7 @@
     <item name="team_badge" type="id"/>
     <item name="team_name" type="id"/>
     <item name="team_viewpager" type="id"/>
+    <item name="player_icon" type="id"/>
+    <item name="players_name" type="id"/>
+    <item name="players_role" type="id"/>
 </resources>

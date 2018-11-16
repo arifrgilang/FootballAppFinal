@@ -36,7 +36,7 @@ class PrevEventsFragment : Fragment(), AnkoComponent<Context>, EventsView {
     private lateinit var mLoading: ProgressBar
     private lateinit var mRefreshLayout: SwipeRefreshLayout
     private lateinit var spinner: Spinner
-    // -
+    //
     private lateinit var mPresenter: PrevEventsPresenter
     private lateinit var mAdapter: PrevEventsAdapter
     //

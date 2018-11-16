@@ -12,7 +12,7 @@ import com.rz.rz.footballappfinal.utils.PagerAdapter
 import com.rz.rz.footballappfinal.view.teams.teamDetail.TeamDetailFragment
 import com.rz.rz.footballappfinal.view.teams.teamPlayers.TeamPlayersFragment
 
-class TeamDetailTabLayoutFragment(): Fragment(){
+class TeamDetailTabLayoutFragment: Fragment(){
     private lateinit var tab: TabLayout
     private lateinit var vp: ViewPager
     private lateinit var pagerAdapter: PagerAdapter
@@ -23,8 +23,8 @@ class TeamDetailTabLayoutFragment(): Fragment(){
         vp = view.findViewById(R.id.team_detail_viewpager)
 
         pagerAdapter = PagerAdapter(childFragmentManager)
-        pagerAdapter.addFragment(TeamPlayersFragment(), "Players")
         pagerAdapter.addFragment(TeamDetailFragment(), "Details")
+        pagerAdapter.addFragment(TeamPlayersFragment(), "Players")
 
         vp.adapter = pagerAdapter
         tab.setupWithViewPager(vp)
