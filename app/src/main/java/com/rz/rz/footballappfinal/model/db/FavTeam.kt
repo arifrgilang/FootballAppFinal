@@ -1,6 +1,6 @@
 package com.rz.rz.footballappfinal.model.db
 
-data class Favorite(val id: Long?, val teamId: String?, val teamName: String?, val teamBadge: String?) {
+data class FavTeam(val id: Long?, val teamId: String?, val teamName: String?, val teamBadge: String?) {
 
     companion object {
         const val TABLE_FAVORITE: String = "FAVORITE_TEAM"

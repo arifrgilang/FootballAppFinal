@@ -8,7 +8,7 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
 
-class TeamsPresenter(private val view: TeamView,
+class TeamsPresenter(private val view: TeamsView,
                      private val apiRepository: ApiRepository,
                      private val gson: Gson){
 

@@ -22,25 +22,25 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables if not exists
         db.createTable(
-            Fav.TABLE_FAVORITE, true,
-            Fav.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-            Fav.TEAM_ID to TEXT + UNIQUE,
-            Fav.HOME_NAME to TEXT,
-            Fav.AWAY_NAME to TEXT,
-            Fav.HOME_SCORE to TEXT,
-            Fav.AWAY_SCORE to TEXT,
-            Fav.DATE_EVENT to TEXT)
+            FavMatch.TABLE_FAVORITE, true,
+            FavMatch.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            FavMatch.TEAM_ID to TEXT + UNIQUE,
+            FavMatch.HOME_NAME to TEXT,
+            FavMatch.AWAY_NAME to TEXT,
+            FavMatch.HOME_SCORE to TEXT,
+            FavMatch.AWAY_SCORE to TEXT,
+            FavMatch.DATE_EVENT to TEXT)
 
-        db.createTable(Favorite.TABLE_FAVORITE, true,
-            Favorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-            Favorite.TEAM_ID to TEXT + UNIQUE,
-            Favorite.TEAM_NAME to TEXT,
-            Favorite.TEAM_BADGE to TEXT)
+        db.createTable(FavTeam.TABLE_FAVORITE, true,
+            FavTeam.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            FavTeam.TEAM_ID to TEXT + UNIQUE,
+            FavTeam.TEAM_NAME to TEXT,
+            FavTeam.TEAM_BADGE to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Here you can upgrade tables, as usual
-        db.dropTable(Fav.TABLE_FAVORITE, true)
+        db.dropTable(FavMatch.TABLE_FAVORITE, true)
     }
 }
 

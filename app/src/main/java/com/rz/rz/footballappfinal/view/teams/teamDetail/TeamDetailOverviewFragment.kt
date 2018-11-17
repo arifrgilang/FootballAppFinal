@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.teams
+package com.rz.rz.footballappfinal.view.teams.teamDetail
 
 import android.content.Context
 import android.os.Bundle

@@ -8,7 +8,7 @@ import com.rz.rz.footballappfinal.model.matches.TeamBadgesResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class EventDetailPresenter (private val view: DetailView,
+class EventDetailPresenter (private val view: EventDetailView,
                             private val apiRepository: ApiRepository,
                             private val gson: Gson) {
 

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.rvAdapter
+package com.rz.rz.footballappfinal.utils.rvAdapter.fav
 
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.model.db.Fav
+import com.rz.rz.footballappfinal.model.db.FavMatch
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class FavEventsAdapter(private val events: List<Fav>,
-                       private val listener: (Fav) -> Unit)
+class FavEventsAdapter(private val events: List<FavMatch>,
+                       private val listener: (FavMatch) -> Unit)
     : RecyclerView.Adapter<FavEventsViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavEventsViewHolder {
@@ -41,7 +41,7 @@ class FavEventsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val awayName: TextView = view.findViewById(R.id.team_away_name)
     private val awayScore: TextView = view.findViewById(R.id.team_away_score)
 
-    fun bindItem(event: Fav, listener: (Fav) -> Unit){
+    fun bindItem(event: FavMatch, listener: (FavMatch) -> Unit){
         matchDate.text = event.dateEvent
         homeName.text = event.homeName
         homeScore.text = event.homeScore

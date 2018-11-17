@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.rvAdapter
+package com.rz.rz.footballappfinal.utils.rvAdapter.teams
 
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.model.players.Player
 import com.rz.rz.footballappfinal.model.players.PlayerList
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*

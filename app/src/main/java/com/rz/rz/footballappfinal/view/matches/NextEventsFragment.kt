@@ -20,8 +20,7 @@ import com.rz.rz.footballappfinal.presenter.matches.EventsView
 import com.rz.rz.footballappfinal.presenter.matches.NextEventsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
-import com.rz.rz.footballappfinal.view.rvAdapter.NextEventsAdapter
-import com.rz.rz.footballappfinal.view.rvAdapter.PrevEventsAdapter
+import com.rz.rz.footballappfinal.utils.rvAdapter.matches.NextEventsAdapter
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.*

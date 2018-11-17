@@ -13,11 +13,11 @@ import android.widget.*
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.api.ApiRepository
-import com.rz.rz.footballappfinal.model.db.Fav
+import com.rz.rz.footballappfinal.model.db.FavMatch
 import com.rz.rz.footballappfinal.model.matches.FootballEvent
 import com.rz.rz.footballappfinal.model.matches.TeamBadges
 import com.rz.rz.footballappfinal.presenter.matches.EventDetailPresenter
-import com.rz.rz.footballappfinal.presenter.matches.DetailView
+import com.rz.rz.footballappfinal.presenter.matches.EventDetailView
 import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
@@ -29,7 +29,7 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
 
-class EventDetailActivity : AppCompatActivity(), DetailView {
+class EventDetailActivity : AppCompatActivity(), EventDetailView {
     private lateinit var mFootballEvent: FootballEvent
     private lateinit var mPresenter: EventDetailPresenter
     private lateinit var progressBar: ProgressBar
@@ -247,11 +247,11 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
     // Handle Database
     private fun favoriteState(){
         database.use {
-            val result = select(Fav.TABLE_FAVORITE)
+            val result = select(FavMatch.TABLE_FAVORITE)
                 .whereArgs("(TEAM_ID = {id})",
                     "id" to mId)
             //SELECT * FROM TABLE_FAVORITE WHERE TEAM_ID = mId
-            val favorite = result.parseList(classParser<Fav>())
+            val favorite = result.parseList(classParser<FavMatch>())
             //if empty, store the id inside db
             if (!favorite.isEmpty()) isFavorite = true
         }
@@ -260,13 +260,13 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
         try {
             database.use {
                 insert(
-                    Fav.TABLE_FAVORITE,
-                    Fav.TEAM_ID to mFootballEvent.idEvent,
-                    Fav.HOME_NAME to mFootballEvent.strHomeTeam,
-                    Fav.AWAY_NAME to mFootballEvent.strAwayTeam,
-                    Fav.HOME_SCORE to mFootballEvent.intHomeScore,
-                    Fav.AWAY_SCORE to mFootballEvent.intAwayScore,
-                    Fav.DATE_EVENT to mFootballEvent.dateEvent)
+                    FavMatch.TABLE_FAVORITE,
+                    FavMatch.TEAM_ID to mFootballEvent.idEvent,
+                    FavMatch.HOME_NAME to mFootballEvent.strHomeTeam,
+                    FavMatch.AWAY_NAME to mFootballEvent.strAwayTeam,
+                    FavMatch.HOME_SCORE to mFootballEvent.intHomeScore,
+                    FavMatch.AWAY_SCORE to mFootballEvent.intAwayScore,
+                    FavMatch.DATE_EVENT to mFootballEvent.dateEvent)
             }
             scrollView.snackbar("Added to favorite").show()
         } catch (e: SQLiteConstraintException){
@@ -278,7 +278,7 @@ class EventDetailActivity : AppCompatActivity(), DetailView {
         try {
             database.use {
                 delete(
-                    Fav.TABLE_FAVORITE,"TEAM_ID = {id}",
+                    FavMatch.TABLE_FAVORITE,"TEAM_ID = {id}",
                     "id" to mId)
             }
             scrollView.snackbar("Removed to favorite").show()

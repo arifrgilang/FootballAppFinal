@@ -16,19 +16,19 @@ import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.R.color.colorAccent
 import com.rz.rz.footballappfinal.api.ApiRepository
 import com.rz.rz.footballappfinal.model.teams.Team
-import com.rz.rz.footballappfinal.presenter.teams.TeamView
+import com.rz.rz.footballappfinal.presenter.teams.TeamsView
 import com.rz.rz.footballappfinal.presenter.teams.TeamsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.activities.TeamDetailActivity
-import com.rz.rz.footballappfinal.view.rvAdapter.TeamsAdapter
+import com.rz.rz.footballappfinal.utils.rvAdapter.teams.TeamsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamView {
+class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     private var teams: MutableList<Team> = mutableListOf()
     private lateinit var presenter: TeamsPresenter
     private lateinit var adapter: TeamsAdapter

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.utils.PagerAdapter
 
-class FavoritesTabLayoutFragment: Fragment(){
+class FavTabLayoutFragment: Fragment(){
     private lateinit var tab: TabLayout
     private lateinit var vp: ViewPager
     private lateinit var pagerAdapter: PagerAdapter
@@ -21,8 +21,8 @@ class FavoritesTabLayoutFragment: Fragment(){
         vp = view.findViewById(R.id.favorites_viewpager)
 
         pagerAdapter = PagerAdapter(childFragmentManager)
-        pagerAdapter.addFragment(FavEventsFragment(), "Fav Events")
-        pagerAdapter.addFragment(FavTeamsFragment(), "Fav Teams")
+        pagerAdapter.addFragment(FavEventsFragment(), "FavMatch Events")
+        pagerAdapter.addFragment(FavTeamsFragment(), "FavMatch Teams")
 
         vp.adapter = pagerAdapter
         tab.setupWithViewPager(vp)

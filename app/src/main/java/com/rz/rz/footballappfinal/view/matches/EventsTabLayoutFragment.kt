@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.teams
+package com.rz.rz.footballappfinal.view.matches
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -10,19 +10,19 @@ import android.view.ViewGroup
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.utils.PagerAdapter
 
-class TeamDetailTabLayoutFragment: Fragment(){
+class EventsTabLayoutFragment: Fragment(){
     private lateinit var tab: TabLayout
     private lateinit var vp: ViewPager
     private lateinit var pagerAdapter: PagerAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.layout_teams, container, false)
-        tab = view.findViewById(R.id.team_detail_tabs)
-        vp = view.findViewById(R.id.team_detail_viewpager)
+        val view = inflater.inflate(R.layout.layout_matches, container, false)
+        tab = view.findViewById(R.id.matches_tabs)
+        vp = view.findViewById(R.id.matches_viewpager)
 
         pagerAdapter = PagerAdapter(childFragmentManager)
-        pagerAdapter.addFragment(TeamDetailOverviewFragment(), "Details")
-        pagerAdapter.addFragment(TeamDetailPlayersFragment(), "Players")
+        pagerAdapter.addFragment(PrevEventsFragment(), "Prev Matches")
+        pagerAdapter.addFragment(NextEventsFragment(), "Next Matches")
 
         vp.adapter = pagerAdapter
         tab.setupWithViewPager(vp)

@@ -17,12 +17,12 @@ import com.rz.rz.footballappfinal.R.drawable.ic_added_to_favorites
 import com.rz.rz.footballappfinal.R.id.add_to_favorite
 import com.rz.rz.footballappfinal.R.menu.detail_menu
 import com.rz.rz.footballappfinal.api.ApiRepository
-import com.rz.rz.footballappfinal.model.db.Favorite
+import com.rz.rz.footballappfinal.model.db.FavTeam
 import com.rz.rz.footballappfinal.model.teams.Team
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailPresenter
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailView
 import com.rz.rz.footballappfinal.model.db.database
-import com.rz.rz.footballappfinal.view.teams.TeamDetailTabLayoutFragment
+import com.rz.rz.footballappfinal.view.teams.teamDetail.TeamDetailTabLayoutFragment
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -74,7 +74,9 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     private fun loadFragmentLayout(){
         with(supportFragmentManager.beginTransaction()) {
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            replace(R.id.team_detail_container, TeamDetailTabLayoutFragment())
+            replace(R.id.team_detail_container,
+                TeamDetailTabLayoutFragment()
+            )
             commit()
         }
     }
@@ -85,10 +87,10 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
     private fun favoriteState(){
         database.use {
-            val result = select(Favorite.TABLE_FAVORITE)
+            val result = select(FavTeam.TABLE_FAVORITE)
                 .whereArgs("(TEAM_ID = {id})",
                     "id" to id)
-            val favorite = result.parseList(classParser<Favorite>())
+            val favorite = result.parseList(classParser<FavTeam>())
             if (!favorite.isEmpty()) isFavorite = true
         }
     }
@@ -133,10 +135,10 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
         try {
             database.use {
                 insert(
-                    Favorite.TABLE_FAVORITE,
-                    Favorite.TEAM_ID to teams.teamId,
-                    Favorite.TEAM_NAME to teams.teamName,
-                    Favorite.TEAM_BADGE to teams.teamBadge)
+                    FavTeam.TABLE_FAVORITE,
+                    FavTeam.TEAM_ID to teams.teamId,
+                    FavTeam.TEAM_NAME to teams.teamName,
+                    FavTeam.TEAM_BADGE to teams.teamBadge)
             }
             layout.snackbar("Added to favorite").show()
         } catch (e: SQLiteConstraintException){
@@ -148,7 +150,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
         try {
             database.use {
                 delete(
-                    Favorite.TABLE_FAVORITE, "TEAM_ID = {id}",
+                    FavTeam.TABLE_FAVORITE, "TEAM_ID = {id}",
                     "id" to id)
             }
             layout.snackbar("Removed to favorite").show()

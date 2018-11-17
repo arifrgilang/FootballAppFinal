@@ -13,10 +13,10 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.view.activities.EventDetailActivity
-import com.rz.rz.footballappfinal.model.db.Fav
+import com.rz.rz.footballappfinal.model.db.FavMatch
 import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.utils.invisible
-import com.rz.rz.footballappfinal.view.rvAdapter.FavEventsAdapter
+import com.rz.rz.footballappfinal.utils.rvAdapter.fav.FavEventsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
@@ -27,7 +27,7 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 class FavEventsFragment : Fragment(), AnkoComponent<Context> {
 
-    private var favoritesList: MutableList<Fav> = mutableListOf()
+    private var favoritesList: MutableList<FavMatch> = mutableListOf()
     // Layout lateinit
     private lateinit var mRV: RecyclerView
     private lateinit var mLoading: ProgressBar
@@ -48,8 +48,8 @@ class FavEventsFragment : Fragment(), AnkoComponent<Context> {
     private fun showFavorite(){
         context?.database?.use {
             mRefreshLayout.isRefreshing = false
-            val result = select(Fav.TABLE_FAVORITE)
-            val favorite = result.parseList(classParser<Fav>())
+            val result = select(FavMatch.TABLE_FAVORITE)
+            val favorite = result.parseList(classParser<FavMatch>())
             mLoading.invisible()
             favoritesList.addAll(favorite)
             mAdapter.notifyDataSetChanged()

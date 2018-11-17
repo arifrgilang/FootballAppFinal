@@ -12,10 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.rz.rz.footballappfinal.R.color.colorAccent
-import com.rz.rz.footballappfinal.model.db.Favorite
+import com.rz.rz.footballappfinal.model.db.FavTeam
 import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.view.activities.TeamDetailActivity
-import com.rz.rz.footballappfinal.view.rvAdapter.FavTeamsAdapter
+import com.rz.rz.footballappfinal.utils.rvAdapter.fav.FavTeamsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
@@ -25,20 +25,20 @@ import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 class FavTeamsFragment : Fragment(), AnkoComponent<Context> {
-    private var favorites: MutableList<Favorite> = mutableListOf()
+    private var favTeams: MutableList<FavTeam> = mutableListOf()
     private lateinit var adapter: FavTeamsAdapter
     private lateinit var listEvent: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter = FavTeamsAdapter(favorites) {
+        adapter = FavTeamsAdapter(favTeams) {
             ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
         listEvent.adapter = adapter
         showFavorite()
         swipeRefresh.onRefresh {
-            favorites.clear()
+            favTeams.clear()
             showFavorite()
         }
     }
@@ -46,9 +46,9 @@ class FavTeamsFragment : Fragment(), AnkoComponent<Context> {
     private fun showFavorite(){
         context?.database?.use {
             swipeRefresh.isRefreshing = false
-            val result = select(Favorite.TABLE_FAVORITE)
-            val favorite = result.parseList(classParser<Favorite>())
-            favorites.addAll(favorite)
+            val result = select(FavTeam.TABLE_FAVORITE)
+            val favorite = result.parseList(classParser<FavTeam>())
+            favTeams.addAll(favorite)
             adapter.notifyDataSetChanged()
         }
     }

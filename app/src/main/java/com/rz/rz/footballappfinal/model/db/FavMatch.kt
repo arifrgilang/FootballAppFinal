@@ -1,12 +1,12 @@
 package com.rz.rz.footballappfinal.model.db
 
-data class Fav(val id: Long?,
-               val teamId: String?,
-               val homeName: String?,
-               val awayName: String?,
-               val homeScore: String?,
-               val awayScore: String?,
-               val dateEvent: String?) {
+data class FavMatch(val id: Long?,
+                    val teamId: String?,
+                    val homeName: String?,
+                    val awayName: String?,
+                    val homeScore: String?,
+                    val awayScore: String?,
+                    val dateEvent: String?) {
     companion object {
         const val TABLE_FAVORITE: String = "FAVORITE_MATCH"
         const val ID: String = "ID_"

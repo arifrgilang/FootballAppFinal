@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.R.id.*
-import com.rz.rz.footballappfinal.view.favorites.FavoritesTabLayoutFragment
-import com.rz.rz.footballappfinal.view.matches.MatchesTabLayoutFragment
+import com.rz.rz.footballappfinal.view.favorites.FavTabLayoutFragment
+import com.rz.rz.footballappfinal.view.matches.EventsTabLayoutFragment
 import com.rz.rz.footballappfinal.view.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loadFragment(MatchesTabLayoutFragment())
+        loadFragment(EventsTabLayoutFragment())
         setBottomBarListener()
     }
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                 bottom_navigation.selectedItemId -> return@setOnNavigationItemSelectedListener false
 
                 matches_menu -> {
-                    loadFragment(MatchesTabLayoutFragment())
+                    loadFragment(EventsTabLayoutFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 teams_menu -> {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 fav_menu -> {
-                    loadFragment(FavoritesTabLayoutFragment())
+                    loadFragment(FavTabLayoutFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
             }
