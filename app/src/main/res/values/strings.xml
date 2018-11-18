@@ -11,4 +11,5 @@
     <string name="blank">Blank</string>
     <string name="player_weight">Weight(Kg)</string>
     <string name="title_height">Height(m)</string>
+    <string name="resource_shots">Goals</string>
 </resources>

@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.*
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.R
+import com.rz.rz.footballappfinal.R.color.colorPrimary
 import com.rz.rz.footballappfinal.api.ApiRepository
 import com.rz.rz.footballappfinal.model.db.FavMatch
 import com.rz.rz.footballappfinal.model.matches.FootballEvent
@@ -47,10 +48,39 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView {
 
     private lateinit var homeName: TextView
     private lateinit var homeBadges: ImageView
+    private lateinit var homeGoal: TextView
+    private lateinit var homeGK: TextView
+    private lateinit var homeDEF: TextView
+    private lateinit var homeMID: TextView
+    private lateinit var homeFW: TextView
 
     private lateinit var awayName: TextView
     private lateinit var awayBadges: ImageView
+    private lateinit var awayGoal: TextView
+    private lateinit var awayGK: TextView
+    private lateinit var awayDEF: TextView
+    private lateinit var awayMID: TextView
+    private lateinit var awayFW: TextView
 
+//    const val TABLE_FAVORITE: String = "FAVORITE_MATCH"
+//    const val ID: String = "ID_"
+//    const val TEAM_ID: String = "TEAM_ID"
+//    const val DATE_EVENT: String = "DATE_EVENT"
+//    const val HOME_NAME: String = "HOME_NAME"
+//    const val HOME_SCORE: String = "HOME_SCORE"
+//    const val HOME_GOAL: String = "HOME_GOAL"
+//    const val HOME_LINEUP_GK: String = "HOME_LINEUP_GK"
+//    const val HOME_LINEUP_DEF: String = "HOME_LINEUP_DEF"
+//    const val HOME_LINEUP_MID: String = "HOME_LINEUP_MID"
+//    const val HOME_LINEUP_FW: String = "HOME_LINEUP_FW"
+//    const val AWAY_NAME: String = "AWAY_NAME"
+//    const val AWAY_SCORE: String = "AWAY_SCORE"
+//    const val AWAY_GOAL: String = "AWAY_GOAL"
+//    const val AWAY_LINEUP_GK: String = "AWAY_LINEUP_GK"
+//    const val AWAY_LINEUP_DEF: String = "AWAY_LINEUP_DEF"
+//    const val AWAY_LINEUP_MID: String = "AWAY_LINEUP_MID"
+//    const val AWAY_LINEUP_FW: String = "AWAY_LINEUP_FW"
+//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //get intent values
@@ -178,6 +208,238 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView {
                         }.lparams {
                             width = matchParent
                             height = dip(1)
+                            topMargin = dip(10)
+                            leftMargin = dip(10)
+                            rightMargin = dip(10)
+                        }
+
+                        //shot
+                        textView {
+                            textSize = 18f
+                            text = "Goals"
+                            setTypeface(null, Typeface.BOLD)
+                        }.lparams(width = wrapContent, height = wrapContent){
+                            gravity = Gravity.CENTER_HORIZONTAL
+                        }
+
+                        linearLayout {
+                            orientation = LinearLayout.HORIZONTAL
+                            weightSum = 1f
+
+                            relativeLayout {
+                                homeGoal = textView {
+                                }.lparams(width = wrapContent, height = wrapContent) {
+                                    gravity = Gravity.START
+                                }
+                            }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                topMargin = dip(16)
+                            }
+
+                            relativeLayout {
+                                textView {
+                                    textSize = 18f
+                                    text = ""
+                                    setTypeface(null, Typeface.BOLD)
+                                }.lparams(width = wrapContent, height = wrapContent) {
+                                    gravity = Gravity.CENTER_HORIZONTAL
+                                }
+                            }.lparams(width = dip(0), height = wrapContent, weight = 0.2f) {
+                                topMargin = dip(16)
+                            }
+
+                            relativeLayout {
+                                awayGoal = textView {
+                                }.lparams(width = wrapContent, height = wrapContent) {
+                                    gravity = Gravity.END
+                                }
+                            }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                topMargin = dip(16)
+                            }
+                        }.lparams(){
+                            leftMargin = dip(10)
+                            rightMargin = dip(10)
+                        }
+
+                        view {
+                            backgroundColor = R.color.cardview_dark_background
+                        }.lparams {
+                            width = matchParent
+                            height = dip(1)
+                            topMargin = dip(10)
+                            leftMargin = dip(10)
+                            rightMargin = dip(10)
+                        }
+
+                        linearLayout{
+                            orientation = LinearLayout.VERTICAL
+
+                            textView {
+                                textSize = 18f
+                                text = "Lineup"
+                                setTypeface(null, Typeface.BOLD)
+                            }.lparams(width = wrapContent, height = wrapContent){
+                                gravity = Gravity.CENTER_HORIZONTAL
+                            }
+
+                            //goalkeeper
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
+                                weightSum = 1f
+
+                                relativeLayout {
+                                    homeGK = textView {
+                                        textSize = 16f
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.START
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(16)
+                                }
+
+                                relativeLayout {
+                                    textView {
+                                        textSize = 14f
+                                        text = "GK"
+                                        textColor = colorPrimary
+                                        setTypeface(null, Typeface.BOLD)
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.CENTER_HORIZONTAL
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.2f) {
+                                    topMargin = dip(16)
+                                }
+
+                                relativeLayout {
+                                    awayGK = textView {
+                                        textSize = 16f
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.END
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(16)
+                                }
+                            }
+
+                            //Defense
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
+                                weightSum = 1f
+
+                                relativeLayout {
+                                    homeDEF = textView {
+                                        textSize = 16f
+                                        text
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.START
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(8)
+                                }
+
+                                relativeLayout {
+                                    textView {
+                                        textSize = 14f
+                                        text = "Defense"
+                                        textColor = colorPrimary
+                                        setTypeface(null, Typeface.BOLD)
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.CENTER_HORIZONTAL
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.2f) {
+                                    topMargin = dip(8)
+                                }
+
+                                relativeLayout {
+                                    awayDEF = textView {
+                                        textSize = 16f
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.END
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(8)
+                                }
+                            }
+
+                            //Midfield
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
+                                weightSum = 1f
+
+                                relativeLayout {
+                                    homeMID = textView {
+                                        textSize = 16f
+
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.START
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(8)
+                                }
+
+                                relativeLayout {
+                                    textView {
+                                        textSize = 14f
+                                        text = "Midfield"
+                                        textColor = colorPrimary
+                                        setTypeface(null, Typeface.BOLD)
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.CENTER_HORIZONTAL
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.2f) {
+                                    topMargin = dip(8)
+                                }
+
+                                relativeLayout {
+                                    awayMID = textView {
+                                        textSize = 16f
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.END
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(8)
+                                }
+                            }
+
+                            //Forward
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
+                                weightSum = 1f
+
+                                relativeLayout {
+                                    homeFW = textView {
+                                        textSize = 16f
+
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.START
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(8)
+                                }
+
+                                relativeLayout {
+                                    textView {
+                                        textSize = 14f
+                                        text = "Forward"
+                                        textColor = colorPrimary
+                                        setTypeface(null, Typeface.BOLD)
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.CENTER_HORIZONTAL
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.2f) {
+                                    topMargin = dip(8)
+                                }
+
+                                relativeLayout {
+                                    awayFW = textView {
+                                        textSize = 16f
+                                    }.lparams(width = wrapContent, height = wrapContent) {
+                                        gravity = Gravity.END
+                                    }
+                                }.lparams(width = dip(0), height = wrapContent, weight = 0.4f) {
+                                    topMargin = dip(8)
+                                }
+                            }
+                        }.lparams(width = matchParent, height = wrapContent){
                             leftMargin = dip(10)
                             rightMargin = dip(10)
                         }
@@ -205,7 +467,18 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView {
             scoreText.text = mFootballEvent.intHomeScore + "-" + mFootballEvent.intAwayScore
         }
         homeName.text = mFootballEvent.strHomeTeam
+        homeGoal.text = mFootballEvent.strHomeGoalDetails
+        homeGK.text = mFootballEvent.strHomeLineupGoalkeeper
+        homeDEF.text = mFootballEvent.strHomeLineupDefense
+        homeMID.text = mFootballEvent.strHomeLineupMidfield
+        homeFW.text = mFootballEvent.strHomeLineupForward
+
         awayName.text = mFootballEvent.strAwayTeam
+        awayGoal.text = mFootballEvent.strAwayGoalDetails
+        awayGK.text = mFootballEvent.strAwayLineupGoalkeeper
+        awayDEF.text = mFootballEvent.strAwayLineupDefense
+        awayMID.text = mFootballEvent.strAwayLineupMidfield
+        awayFW.text = mFootballEvent.strAwayLineupForward
     }
     override fun setHomeBadges(teams: List<TeamBadges>) {
         Picasso.get().load(teams[0].strTeamBadge).into(homeBadges)
