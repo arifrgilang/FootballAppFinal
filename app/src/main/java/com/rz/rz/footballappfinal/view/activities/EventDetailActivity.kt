@@ -262,11 +262,22 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView {
                 insert(
                     FavMatch.TABLE_FAVORITE,
                     FavMatch.TEAM_ID to mFootballEvent.idEvent,
+                    FavMatch.DATE_EVENT to mFootballEvent.dateEvent,
                     FavMatch.HOME_NAME to mFootballEvent.strHomeTeam,
-                    FavMatch.AWAY_NAME to mFootballEvent.strAwayTeam,
                     FavMatch.HOME_SCORE to mFootballEvent.intHomeScore,
+                    FavMatch.HOME_GOAL to mFootballEvent.strHomeGoalDetails,
+                    FavMatch.HOME_LINEUP_GK to mFootballEvent.strHomeLineupGoalkeeper,
+                    FavMatch.HOME_LINEUP_DEF to mFootballEvent.strHomeLineupDefense,
+                    FavMatch.HOME_LINEUP_MID to mFootballEvent.strHomeLineupMidfield,
+                    FavMatch.HOME_LINEUP_FW to mFootballEvent.strHomeLineupForward,
+                    FavMatch.AWAY_NAME to mFootballEvent.strAwayTeam,
                     FavMatch.AWAY_SCORE to mFootballEvent.intAwayScore,
-                    FavMatch.DATE_EVENT to mFootballEvent.dateEvent)
+                    FavMatch.AWAY_GOAL to mFootballEvent.strAwayGoalDetails,
+                    FavMatch.AWAY_LINEUP_GK to mFootballEvent.strAwayLineupGoalkeeper,
+                    FavMatch.AWAY_LINEUP_DEF to mFootballEvent.strAwayLineupDefense,
+                    FavMatch.AWAY_LINEUP_MID to mFootballEvent.strAwayLineupMidfield,
+                    FavMatch.AWAY_LINEUP_FW to mFootballEvent.strAwayLineupForward
+                )
             }
             scrollView.snackbar("Added to favorite").show()
         } catch (e: SQLiteConstraintException){
