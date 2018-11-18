@@ -3,12 +3,12 @@ package com.rz.rz.footballappfinal.view.teams
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.SearchView
+import android.view.*
 import android.widget.*
 import com.google.gson.Gson
 import com.rz.rz.footballappfinal.R
@@ -41,6 +41,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        setHasOptionsMenu(true)
         setSpinner()
         setRvAdapter()
         requestAPI()
@@ -126,5 +127,20 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
         teams.clear()
         teams.addAll(data)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.search_menu, menu)
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.queryHint = "Search Team"
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                presenter.getTeamBySearch(query)
+                return true
+            }
+            override fun onQueryTextChange(query: String?): Boolean = true
+        })
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

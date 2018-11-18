@@ -4,9 +4,8 @@ import com.google.gson.Gson
 import com.rz.rz.footballappfinal.api.ApiRepository
 import com.rz.rz.footballappfinal.api.TheSportDBAPI
 import com.rz.rz.footballappfinal.model.teams.TeamResponse
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
-import org.jetbrains.anko.coroutines.experimental.bg
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class TeamsPresenter(private val view: TeamsView,
                      private val apiRepository: ApiRepository,
@@ -14,14 +13,29 @@ class TeamsPresenter(private val view: TeamsView,
 
     fun getTeamList(league: String?) {
         view.showLoading()
-        async(UI){
-            val data = bg {
-                gson.fromJson(apiRepository
+        doAsync{
+            val data = gson.fromJson(apiRepository
                     .doRequest(TheSportDBAPI.getAllTeamResponse(league)),
-                    TeamResponse::class.java)
+                    TeamResponse::class.java
+            )
+            uiThread {
+                view.showTeamList(data.teams)
+                view.hideLoading()
             }
-            view.showTeamList(data.await().teams)
-            view.hideLoading()
+        }
+    }
+
+    fun getTeamBySearch(str: String?) {
+        view.showLoading()
+        doAsync{
+            val data = gson.fromJson(apiRepository
+                .doRequest(TheSportDBAPI.getTeamBySearch(str)),
+                TeamResponse::class.java
+            )
+            uiThread {
+                view.showTeamList(data.teams)
+                view.hideLoading()
+            }
         }
     }
 }

@@ -111,11 +111,10 @@ class PrevEventsFragment : Fragment(), AnkoComponent<Context>, EventsView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        menu?.clear()
         inflater?.inflate(R.menu.search_menu, menu)
         val searchItem = menu?.findItem(R.id.action_search)
-        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
-        searchView.queryHint = "Search"
+        val searchView = searchItem?.actionView as SearchView
+        searchView.queryHint = "Search Past Events"
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 mPresenter.requestEventBySearch(query)
