@@ -1,3 +1,10 @@
 package com.rz.rz.footballappfinal.model.matches
 
-data class FootballEventResponse (val events: List<FootballEvent>)
+import com.google.gson.annotations.SerializedName
+
+data class FootballEventResponse (
+    @SerializedName("events")
+    val events: List<FootballEvent>,
+    @SerializedName("event")
+    val searchEvent: List<FootballEvent>
+)

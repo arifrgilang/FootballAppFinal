@@ -9,4 +9,6 @@ object Const{
     const val DETAIL_TEAM: String = "lookupteam.php?id="
     const val PLAYER_TEAM: String = "lookup_all_players.php?id="
     const val PLAYER: String = "lookupplayer.php?id="
+    const val SEARCH_EVENT_BY_STR = "searchevents.php?e="
+    const val SEARCH_TEAM_BY_STR = "searchteams.php?t="
 }

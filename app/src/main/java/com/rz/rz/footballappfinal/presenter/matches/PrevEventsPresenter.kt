@@ -24,4 +24,19 @@ class PrevEventsPresenter(private val view: EventsView,
             }
         }
     }
+
+    fun requestEventBySearch(str: String?){
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                .doRequest(TheSportDBAPI.getEventBySearch(str)),
+                FootballEventResponse::class.java
+            )
+            uiThread {
+                view.hideLoading()
+                println("Matches Responses => ${data.searchEvent}")
+                view.setListRV(data.searchEvent)
+            }
+        }
+    }
 }
