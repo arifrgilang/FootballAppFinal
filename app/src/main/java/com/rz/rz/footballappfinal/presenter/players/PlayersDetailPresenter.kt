@@ -8,6 +8,10 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
 
 class PlayersDetailPresenter(private val view: PlayersDetailView,
                        private val apiRepository: ApiRepository,

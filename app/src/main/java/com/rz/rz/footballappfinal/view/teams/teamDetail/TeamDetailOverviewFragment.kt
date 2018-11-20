@@ -15,6 +15,11 @@ import com.rz.rz.footballappfinal.presenter.teams.TeamDetailFragmentView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.support.v4.ctx
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class TeamDetailOverviewFragment: Fragment(), AnkoComponent<Context>,
     TeamDetailFragmentView {
 

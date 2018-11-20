@@ -25,6 +25,11 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class FavEventsFragment : Fragment(), AnkoComponent<Context> {
 
     private var favoritesList: MutableList<FavMatch> = mutableListOf()

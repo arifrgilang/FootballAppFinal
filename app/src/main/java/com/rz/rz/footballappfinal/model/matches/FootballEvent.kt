@@ -3,6 +3,11 @@ package com.rz.rz.footballappfinal.model.matches
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 data class FootballEvent(
     @SerializedName("idEvent") var idEvent: String? = null,
     @SerializedName("strEvent") var strEvent: String? = null,

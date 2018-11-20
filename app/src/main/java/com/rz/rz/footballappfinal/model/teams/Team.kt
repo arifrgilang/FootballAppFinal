@@ -2,6 +2,11 @@ package com.rz.rz.footballappfinal.model.teams
 
 import com.google.gson.annotations.SerializedName
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class Team (
     @SerializedName("idTeam")
     var teamId: String? = null,

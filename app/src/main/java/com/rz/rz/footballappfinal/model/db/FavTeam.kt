@@ -1,5 +1,10 @@
 package com.rz.rz.footballappfinal.model.db
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 data class FavTeam(val id: Long?, val teamId: String?, val teamName: String?, val teamBadge: String?) {
 
     companion object {

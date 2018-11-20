@@ -10,6 +10,11 @@ import android.view.ViewGroup
 import com.rz.rz.footballappfinal.R
 import com.rz.rz.footballappfinal.utils.PagerAdapter
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class EventsTabLayoutFragment: Fragment(){
     private lateinit var tab: TabLayout
     private lateinit var vp: ViewPager

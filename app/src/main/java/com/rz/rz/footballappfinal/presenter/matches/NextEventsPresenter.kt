@@ -7,6 +7,11 @@ import com.rz.rz.footballappfinal.model.matches.FootballEventResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class NextEventsPresenter(private val view: EventsView,
                           private val apiRepository: ApiRepository,
                           private val gson: Gson) {

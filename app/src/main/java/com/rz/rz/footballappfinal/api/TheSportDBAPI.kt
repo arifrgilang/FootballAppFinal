@@ -12,6 +12,11 @@ import com.rz.rz.footballappfinal.utils.Const.SEARCH_EVENT_BY_STR
 import com.rz.rz.footballappfinal.utils.Const.SEARCH_TEAMS
 import com.rz.rz.footballappfinal.utils.Const.SEARCH_TEAM_BY_STR
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 object TheSportDBAPI {
 
     fun getPastEventsResponse(leagueId: String?): String{

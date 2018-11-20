@@ -1,6 +1,5 @@
 package com.rz.rz.footballappfinal.utils.rvAdapter.fav
 
-
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,11 @@ import com.rz.rz.footballappfinal.model.db.FavTeam
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
 
 class FavTeamsAdapter(private val favTeam: List<FavTeam>,
                       private val listener: (FavTeam) -> Unit)

@@ -8,6 +8,11 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class PlayersListPresenter(private val view: PlayersListView,
                            private val apiRepository: ApiRepository,
                            private val gson: Gson

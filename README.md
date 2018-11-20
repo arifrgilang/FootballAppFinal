@@ -12,11 +12,11 @@ Kotlin Android Developer Expert Final Project. There are many reusable boilerpla
 - Presenter using `doAsync` and `uiThread`
 - RecyclerView Adapter
 - Listener for RecyclerView's ViewHolder
-- ViewPager + TabLayout
+- [ViewPager + TabLayout](https://github.com/arifrgilang/FootballAppFinal/blob/master/markdowns/viewpager-adapter.md)
 - Anko Layout and the Wiring method
-- Picasso (image library)
+- [Picasso image library](https://github.com/arifrgilang/FootballAppFinal/blob/master/markdowns/picasso.md)
 - BottomNavigationBar
-- Fragment Loader
+- [Fragment Loader](https://github.com/arifrgilang/FootballAppFinal/blob/master/markdowns/fragment-loader.md)
 - Back Button in menubar
 - SwipeRefreshLayout
 - ProgressBar

@@ -28,6 +28,11 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     private var teams: MutableList<Team> = mutableListOf()
     private lateinit var presenter: TeamsPresenter

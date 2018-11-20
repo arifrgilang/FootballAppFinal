@@ -19,8 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:layout_below="@id/matches_viewpager"
-    >
+            android:layout_below="@id/matches_viewpager">
 
         <View
                 android:layout_width="match_parent"

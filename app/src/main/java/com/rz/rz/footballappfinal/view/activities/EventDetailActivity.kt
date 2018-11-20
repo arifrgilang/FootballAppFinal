@@ -30,6 +30,11 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class EventDetailActivity : AppCompatActivity(), EventDetailView {
     private lateinit var mFootballEvent: FootballEvent
     private lateinit var mPresenter: EventDetailPresenter
@@ -62,25 +67,6 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView {
     private lateinit var awayMID: TextView
     private lateinit var awayFW: TextView
 
-//    const val TABLE_FAVORITE: String = "FAVORITE_MATCH"
-//    const val ID: String = "ID_"
-//    const val TEAM_ID: String = "TEAM_ID"
-//    const val DATE_EVENT: String = "DATE_EVENT"
-//    const val HOME_NAME: String = "HOME_NAME"
-//    const val HOME_SCORE: String = "HOME_SCORE"
-//    const val HOME_GOAL: String = "HOME_GOAL"
-//    const val HOME_LINEUP_GK: String = "HOME_LINEUP_GK"
-//    const val HOME_LINEUP_DEF: String = "HOME_LINEUP_DEF"
-//    const val HOME_LINEUP_MID: String = "HOME_LINEUP_MID"
-//    const val HOME_LINEUP_FW: String = "HOME_LINEUP_FW"
-//    const val AWAY_NAME: String = "AWAY_NAME"
-//    const val AWAY_SCORE: String = "AWAY_SCORE"
-//    const val AWAY_GOAL: String = "AWAY_GOAL"
-//    const val AWAY_LINEUP_GK: String = "AWAY_LINEUP_GK"
-//    const val AWAY_LINEUP_DEF: String = "AWAY_LINEUP_DEF"
-//    const val AWAY_LINEUP_MID: String = "AWAY_LINEUP_MID"
-//    const val AWAY_LINEUP_FW: String = "AWAY_LINEUP_FW"
-//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //get intent values

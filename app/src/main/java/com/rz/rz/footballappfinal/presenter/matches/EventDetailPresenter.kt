@@ -8,6 +8,11 @@ import com.rz.rz.footballappfinal.model.matches.TeamBadgesResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class EventDetailPresenter (private val view: EventDetailView,
                             private val apiRepository: ApiRepository,
                             private val gson: Gson) {
@@ -25,6 +30,7 @@ class EventDetailPresenter (private val view: EventDetailView,
             }
         }
     }
+
     fun getHomeBadges(teamName: String?){
         view.showLoading()
         doAsync {
@@ -39,6 +45,7 @@ class EventDetailPresenter (private val view: EventDetailView,
             }
         }
     }
+
     fun getAwayBadges(teamName: String?){
         view.showLoading()
         doAsync {

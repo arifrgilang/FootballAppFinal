@@ -1,5 +1,10 @@
 package com.rz.rz.footballappfinal.model.db
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 data class FavMatch(val id: Long?,
                     val teamId: String?,
                     val dateEvent: String?,

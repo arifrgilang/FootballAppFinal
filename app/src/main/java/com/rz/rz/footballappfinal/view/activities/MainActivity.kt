@@ -11,6 +11,11 @@ import com.rz.rz.footballappfinal.view.matches.EventsTabLayoutFragment
 import com.rz.rz.footballappfinal.view.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

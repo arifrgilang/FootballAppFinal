@@ -2,6 +2,11 @@ package com.rz.rz.footballappfinal.model.players
 
 import com.google.gson.annotations.SerializedName
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class Player (
     @SerializedName("strFanart1")
     var strFanart1: String? = null,

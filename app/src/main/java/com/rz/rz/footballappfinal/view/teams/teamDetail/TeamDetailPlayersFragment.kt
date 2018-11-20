@@ -22,6 +22,11 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class TeamDetailPlayersFragment: Fragment(), AnkoComponent<Context>,
     PlayersListView {
     private var playersList: MutableList<PlayerList> = mutableListOf()

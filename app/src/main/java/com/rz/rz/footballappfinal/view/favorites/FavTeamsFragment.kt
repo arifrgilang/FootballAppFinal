@@ -1,6 +1,5 @@
 package com.rz.rz.footballappfinal.view.favorites
 
-
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,7 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.rz.rz.footballappfinal.R.color.colorAccent
 import com.rz.rz.footballappfinal.model.db.FavTeam
 import com.rz.rz.footballappfinal.model.db.database
@@ -23,6 +21,11 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
+
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
 
 class FavTeamsFragment : Fragment(), AnkoComponent<Context> {
     private var favTeams: MutableList<FavTeam> = mutableListOf()

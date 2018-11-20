@@ -29,6 +29,11 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class NextEventsFragment : Fragment(), AnkoComponent<Context>, EventsView {
     private var footballEventList: MutableList<FootballEvent> = mutableListOf()
     // Layout lateinit

@@ -12,6 +12,11 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class FavEventsAdapter(private val events: List<FavMatch>,
                        private val listener: (FavMatch) -> Unit)
     : RecyclerView.Adapter<FavEventsViewHolder>(){

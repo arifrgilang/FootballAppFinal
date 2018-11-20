@@ -14,6 +14,11 @@ import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class NextEventsAdapter(private val events: List<FootballEvent>,
                         private val listener: (FootballEvent) -> Unit)
     : RecyclerView.Adapter<NextEventsViewHolder>(){

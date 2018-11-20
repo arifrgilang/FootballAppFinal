@@ -4,6 +4,11 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import org.jetbrains.anko.db.*
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
     "FavTeam.db", null, 1) {
     companion object {
@@ -20,7 +25,6 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        // Here you create tables if not exists
         db.createTable(
             FavMatch.TABLE_FAVORITE, true,
             FavMatch.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
@@ -51,7 +55,6 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Here you can upgrade tables, as usual
         db.dropTable(FavMatch.TABLE_FAVORITE, true)
     }
 }

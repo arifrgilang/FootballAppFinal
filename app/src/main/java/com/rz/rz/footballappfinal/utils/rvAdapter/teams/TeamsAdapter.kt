@@ -1,6 +1,5 @@
 package com.rz.rz.footballappfinal.utils.rvAdapter.teams
 
-
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,11 @@ import com.rz.rz.footballappfinal.model.teams.Team
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
 
 class TeamsAdapter (private val teams: List<Team>, private val listener: (Team) -> Unit)
     : RecyclerView.Adapter<TeamViewHolder>(){

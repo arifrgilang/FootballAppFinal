@@ -1,5 +1,10 @@
 package com.rz.rz.footballappfinal.utils
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 object Const{
     const val PAST_LEAGUE: String = "eventspastleague.php?id="
     const val NEXT_LEAGUE: String = "eventsnextleague.php?id="

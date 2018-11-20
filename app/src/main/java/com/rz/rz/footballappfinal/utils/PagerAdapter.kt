@@ -4,6 +4,11 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class PagerAdapter (fm: FragmentManager)  : FragmentPagerAdapter(fm) {
     private val mFragmentList = ArrayList<Fragment>()
     private val mFragmentTitleList = ArrayList<String>()

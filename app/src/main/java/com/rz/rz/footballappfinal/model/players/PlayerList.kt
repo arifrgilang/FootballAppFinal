@@ -2,6 +2,10 @@ package com.rz.rz.footballappfinal.model.players
 
 import com.google.gson.annotations.SerializedName
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
 
 class PlayerList (
     @SerializedName("idPlayer")

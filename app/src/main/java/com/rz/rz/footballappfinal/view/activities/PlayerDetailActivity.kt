@@ -17,6 +17,11 @@ import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.squareup.picasso.Picasso
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class PlayerDetailActivity : AppCompatActivity(), PlayersDetailView {
     private lateinit var presenter: PlayersDetailPresenter
     private lateinit var playerLoading: ProgressBar

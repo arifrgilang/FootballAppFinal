@@ -13,6 +13,11 @@ import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class PlayersAdapter (private val players: List<PlayerList>, private val listener: (PlayerList) -> Unit)
     : RecyclerView.Adapter<PlayerViewHolder>(){
     override fun getItemCount(): Int = players.size

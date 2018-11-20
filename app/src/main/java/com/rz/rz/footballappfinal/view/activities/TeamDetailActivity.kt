@@ -30,6 +30,11 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
 
+/*
+ * Created by Arif R Gilang
+ * github.com/arifrgilang
+ */
+
 class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     private lateinit var presenter: TeamDetailPresenter
     private lateinit var teams: Team
