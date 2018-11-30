@@ -3,7 +3,6 @@ package com.rz.rz.footballappfinal.view.teams
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -21,7 +20,7 @@ import com.rz.rz.footballappfinal.presenter.teams.TeamsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.activities.TeamDetailActivity
-import com.rz.rz.footballappfinal.utils.rvAdapter.teams.TeamsAdapter
+import com.rz.rz.footballappfinal.utils.rv_adapter.teams.TeamsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.utils.rvAdapter.matches
+package com.rz.rz.footballappfinal.utils.rv_adapter.matches
 
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity

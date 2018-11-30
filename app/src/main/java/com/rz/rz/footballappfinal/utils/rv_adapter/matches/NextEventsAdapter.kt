@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.utils.rvAdapter.fav
+package com.rz.rz.footballappfinal.utils.rv_adapter.matches
 
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rz.rz.footballappfinal.R
-import com.rz.rz.footballappfinal.model.db.FavMatch
-import org.jetbrains.anko.*
+import com.rz.rz.footballappfinal.model.matches.FootballEvent
+import org.jetbrains.anko.AnkoComponent
+import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.cardview.v7.cardView
+import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 /*
@@ -17,13 +19,13 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
  * github.com/arifrgilang
  */
 
-class FavEventsAdapter(private val events: List<FavMatch>,
-                       private val listener: (FavMatch) -> Unit)
-    : RecyclerView.Adapter<FavEventsViewHolder>(){
+class NextEventsAdapter(private val events: List<FootballEvent>,
+                        private val listener: (FootballEvent) -> Unit)
+    : RecyclerView.Adapter<NextEventsViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavEventsViewHolder {
-        return FavEventsViewHolder(
-            FavViewHolder().createView(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NextEventsViewHolder {
+        return NextEventsViewHolder(
+            NextViewHolder().createView(
                 AnkoContext.create(
                     parent.context,
                     parent
@@ -34,98 +36,88 @@ class FavEventsAdapter(private val events: List<FavMatch>,
 
     override fun getItemCount(): Int = events.size
 
-    override fun onBindViewHolder(holder: FavEventsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NextEventsViewHolder, position: Int) {
         holder.bindItem(events[position], listener)
     }
 }
 
-class FavEventsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class NextEventsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val matchDate: TextView = view.findViewById(R.id.match_date)
     private val homeName: TextView = view.findViewById(R.id.team_home_name)
-    private val homeScore: TextView = view.findViewById(R.id.team_home_score)
     private val awayName: TextView = view.findViewById(R.id.team_away_name)
-    private val awayScore: TextView = view.findViewById(R.id.team_away_score)
 
-    fun bindItem(event: FavMatch, listener: (FavMatch) -> Unit){
+    fun bindItem(event: FootballEvent, listener: (FootballEvent) -> Unit){
         matchDate.text = event.dateEvent
-        homeName.text = event.homeName
-        homeScore.text = event.homeScore
-        awayName.text = event.awayName
-        awayScore.text = event.awayScore
+        homeName.text = event.strHomeTeam
+        awayName.text = event.strAwayTeam
         itemView.onClick { listener(event) }
     }
 }
 
-class FavViewHolder : AnkoComponent<ViewGroup> {
+class NextViewHolder : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>): View {
-        return with(ui){
-            cardView{
-                lparams(width = matchParent, height = wrapContent){
+        return with(ui) {
+            cardView {
+                lparams(width = matchParent, height = wrapContent) {
                     margin = dip(6)
                 }
-                linearLayout{
+                linearLayout {
                     padding = dip(8)
                     orientation = LinearLayout.VERTICAL
                     // Match Date
-                    textView{
+                    textView {
                         id = R.id.match_date
                         textColor = R.color.colorAccent
-                    }.lparams{
+                    }.lparams {
                         height = wrapContent
                         width = wrapContent
                         gravity = Gravity.CENTER
                         bottomMargin = dip(6)
                     }
-                    // Team A vs Team B score
-                    linearLayout{
+                    // Team A vs Team B
+                    linearLayout {
                         orientation = LinearLayout.HORIZONTAL
                         // Team A Name
-                        textView{
+                        textView {
                             id = R.id.team_home_name
                             textSize = 18f
                             textAlignment = View.TEXT_ALIGNMENT_TEXT_END
-                        }.lparams{
+                        }.lparams {
                             height = wrapContent
                             width = dip(0)
                             weight = 5f
                         }
-                        // Team A Score
-                        textView{
-                            id = R.id.team_home_score
-                            textSize = 20f
-                            textAlignment = View.TEXT_ALIGNMENT_TEXT_END
-                        }.lparams{
+                        // space
+                        view {
+                        }.lparams {
                             height = wrapContent
                             width = dip(0)
                             weight = 1f
                         }
                         // vs
-                        textView{
+                        textView {
                             id = R.id.vs
                             textSize = 16f
                             text = "vs"
                             textAlignment = View.TEXT_ALIGNMENT_CENTER
-                        }.lparams{
+                        }.lparams {
                             height = wrapContent
                             width = dip(0)
                             weight = 1f
                         }
-                        // Team B Score
-                        textView{
-                            id = R.id.team_away_score
-                            textSize = 20f
-                            textAlignment = View.TEXT_ALIGNMENT_TEXT_START
-                        }.lparams{
+                        // space
+                        view {
+                        }.lparams {
                             height = wrapContent
                             width = dip(0)
                             weight = 1f
                         }
                         // Team B Name
-                        textView{
+                        textView {
                             id = R.id.team_away_name
                             textSize = 18f
                             textAlignment = View.TEXT_ALIGNMENT_TEXT_START
-                        }.lparams{
+                        }.lparams {
                             height = wrapContent
                             width = dip(0)
                             weight = 5f

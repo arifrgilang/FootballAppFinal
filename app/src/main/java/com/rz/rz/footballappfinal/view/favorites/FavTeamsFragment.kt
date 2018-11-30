@@ -13,7 +13,7 @@ import com.rz.rz.footballappfinal.R.color.colorAccent
 import com.rz.rz.footballappfinal.model.db.FavTeam
 import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.view.activities.TeamDetailActivity
-import com.rz.rz.footballappfinal.utils.rvAdapter.fav.FavTeamsAdapter
+import com.rz.rz.footballappfinal.utils.rv_adapter.fav.FavTeamsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select

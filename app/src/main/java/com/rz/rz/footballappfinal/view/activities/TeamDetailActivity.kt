@@ -22,7 +22,7 @@ import com.rz.rz.footballappfinal.model.teams.Team
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailPresenter
 import com.rz.rz.footballappfinal.presenter.teams.TeamDetailView
 import com.rz.rz.footballappfinal.model.db.database
-import com.rz.rz.footballappfinal.view.teams.teamDetail.TeamDetailTabLayoutFragment
+import com.rz.rz.footballappfinal.view.teams.team_detail.TeamDetailTabLayoutFragment
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete

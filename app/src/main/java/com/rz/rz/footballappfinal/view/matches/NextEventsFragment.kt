@@ -3,7 +3,6 @@ package com.rz.rz.footballappfinal.view.matches
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -20,7 +19,7 @@ import com.rz.rz.footballappfinal.presenter.matches.EventsView
 import com.rz.rz.footballappfinal.presenter.matches.NextEventsPresenter
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
-import com.rz.rz.footballappfinal.utils.rvAdapter.matches.NextEventsAdapter
+import com.rz.rz.footballappfinal.utils.rv_adapter.matches.NextEventsAdapter
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.*

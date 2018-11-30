@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.utils.rvAdapter.teams
+package com.rz.rz.footballappfinal.utils.rv_adapter.teams
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

@@ -1,4 +1,4 @@
-package com.rz.rz.footballappfinal.view.teams.teamDetail
+package com.rz.rz.footballappfinal.view.teams.team_detail
 
 import android.content.Context
 import android.os.Bundle
@@ -17,7 +17,7 @@ import com.rz.rz.footballappfinal.presenter.players.PlayersListView
 import com.rz.rz.footballappfinal.utils.invisible
 import com.rz.rz.footballappfinal.utils.visible
 import com.rz.rz.footballappfinal.view.activities.PlayerDetailActivity
-import com.rz.rz.footballappfinal.utils.rvAdapter.teams.PlayersAdapter
+import com.rz.rz.footballappfinal.utils.rv_adapter.teams.PlayersAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx

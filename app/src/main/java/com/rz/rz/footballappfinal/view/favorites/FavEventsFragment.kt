@@ -16,7 +16,7 @@ import com.rz.rz.footballappfinal.view.activities.EventDetailActivity
 import com.rz.rz.footballappfinal.model.db.FavMatch
 import com.rz.rz.footballappfinal.model.db.database
 import com.rz.rz.footballappfinal.utils.invisible
-import com.rz.rz.footballappfinal.utils.rvAdapter.fav.FavEventsAdapter
+import com.rz.rz.footballappfinal.utils.rv_adapter.fav.FavEventsAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
