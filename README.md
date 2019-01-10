@@ -23,3 +23,5 @@ Kotlin Android Developer Expert Final Project. There are many reusable boilerpla
 - Spinner
 - SearchView
 - Intent and StartActivity
+
+Detail coming soon. .
